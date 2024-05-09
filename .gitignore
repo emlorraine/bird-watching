@@ -2,3 +2,4 @@
 node_modules
 bird-watching-ui/node_modules
 .env
+.next/*

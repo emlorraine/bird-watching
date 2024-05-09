@@ -1,12 +1,17 @@
 {
   "name": "bird-sightings",
   "version": "1.0.0",
-  "scripts": {
-    "dev": "next dev"
-  },
   "dependencies": {
-    "next": "^14.2.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "exec": "^0.2.1",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "node-fetch": "^2.7.0",
+    "path": "^0.12.7",
+    "react": "^18.3.1"
+  },
+  "scripts": {
+    "start": "node server/index.js"
   }
 }

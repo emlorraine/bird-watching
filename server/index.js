@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 
 app.get('/api/birds/:stateCode', (req, res) => {
     const stateCode = req.params.stateCode;
-    const API_KEY = '1gdhh1b11t6s';
+    const API_KEY = "test"
 
     const curlCommand = `curl --location 'https://api.ebird.org/v2/data/obs/${stateCode}/recent' \
     --header 'X-eBirdApiToken: ${API_KEY}'`

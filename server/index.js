@@ -1,33 +1,30 @@
 const express = require('express');
-const { exec } = require('child_process');
+const fetch = require('node-fetch');
 const cors = require('cors');
 
 const app = express();
 app.use(cors());
 
 const PORT = process.env.PORT || 3001;
+const API_KEY = process.env.API_KEY;
 
-app.get('/api/birds/:stateCode', (req, res) => {
+app.get('/api/birds/:stateCode', async (req, res) => {
     const stateCode = req.params.stateCode;
-    const API_KEY = "test"
-
-    const curlCommand = `curl --location 'https://api.ebird.org/v2/data/obs/${stateCode}/recent' \
-    --header 'X-eBirdApiToken: ${API_KEY}'`
-
-    exec(curlCommand, (error, stdout, stderr) => {
-        if (error) {
-            console.error('Error executing cURL command:', error);
-            res.status(500).json({ error: 'Internal server error' });
-            return;
+    try {
+        const response = await fetch(`https://api.ebird.org/v2/data/obs/${stateCode}/recent`, {
+            headers: new Headers({
+                'X-eBirdApiToken': API_KEY
+            })
+        });
+        if (!response.ok) {
+            throw new Error('Request failed');
         }
-        if (stderr) {
-            console.error('cURL command returned an error:', stderr);
-            res.status(500).json({ error: 'Internal server error' });
-            return;
-        }
-        const responseData = JSON.parse(stdout);
+        const responseData = await response.json();
         res.json(responseData);
-    });
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
 app.listen(PORT, () => {

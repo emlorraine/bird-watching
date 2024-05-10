@@ -9,13 +9,13 @@ import StateView from "../StateView/index";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-const Map = ({ onStateClick }) => { // Pass onStateClick as prop
+const Map = ({ onStateClick }) => {
     const [selectedState, setSelectedState] = useState(null);
 
     const handleStateClick = (stateId) => {
         const clickedState = allStates.find(state => state.val === stateId);
         setSelectedState(clickedState.id);
-        onStateClick(clickedState.id); // Call onStateClick to notify parent
+        onStateClick(clickedState.id);
     };
 
     return (

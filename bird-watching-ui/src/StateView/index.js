@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 import allStates from "../data/usStates.json";
 import birdData from "../data/bird/CA.json";
-import "./StateView.css"; // Import CSS file for styling
+import "./StateView.css";
 
 const StateView = ({ stateCode, onBack }) => {
     const stateName = allStates.find(state => state.id === stateCode)?.name;

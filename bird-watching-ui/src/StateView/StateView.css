@@ -11,11 +11,18 @@
     margin-bottom: 10px;
 }
 
-.state-name {
-    font-size: 24px;
+.credit-text-styling {
+    font-size: 16px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.title-text {
+    font-size: 32px;
     font-weight: bold;
     color: #333;
     font-family: 'Arial', sans-serif;
+
 }
 
 .back-button {
@@ -26,7 +33,7 @@
     border: none;
     border-radius: 5px;
     margin-left: 10px;
-    margin-top: 15px;
+    margin-top: 30px;
     cursor: pointer;
     font-family: 'Arial', sans-serif;
 }

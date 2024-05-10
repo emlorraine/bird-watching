@@ -75,11 +75,12 @@ const StateView = ({ stateCode, onBack }) => {
     return (
         <div className="state-view-container">
             <div className="text-container">
-                <h2 className="state-name">{stateName}</h2>
+                <h2 className="title-text">{stateName}</h2>
                 <button className="back-button" onClick={onBack}>Back to Map</button>
             </div>
             <svg ref={svgRef} className="dot-plot"></svg>
             <div className="tooltip"></div>
+            <div className="credit-text-styling">Data source: eBird, the Cornell Lab of Ornithology </div>
         </div>
     );
 };

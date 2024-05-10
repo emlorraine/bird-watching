@@ -20,31 +20,35 @@ const Map = ({ onStateClick }) => {
 
     return (
         <>
+            <h1 className="title-text">Recent Bird Sightings</h1>
             {selectedState ? (
                 <StateView stateCode={selectedState} />
             ) : (
-                <ComposableMap projection="geoAlbersUsa">
-                    <Geographies geography={geoUrl}>
-                        {({ geographies }) => (
-                            <>
-                                {geographies && geographies.map(geo => (
-                                    <Geography
-                                        key={geo.rsmKey}
-                                        geography={geo}
-                                        onClick={() => handleStateClick(geo.id)}
-                                        style={{
-                                            default: { fill: "#E9E3DA", stroke: "#FFF", strokeWidth: 0.5, outline: 'none' },
-                                            hover: { fill: "#AED9E0", cursor: "pointer", outline: 'none' },
-                                            pressed: {
-                                                fill: "#AED9E0", outline: 'none'
-                                            },
-                                        }}
-                                    />
-                                ))}
-                            </>
-                        )}
-                    </Geographies>
-                </ComposableMap>
+                <>
+                    <ComposableMap projection="geoAlbersUsa">
+                        <Geographies geography={geoUrl}>
+                            {({ geographies }) => (
+                                <>
+                                    {geographies && geographies.map(geo => (
+                                        <Geography
+                                            key={geo.rsmKey}
+                                            geography={geo}
+                                            onClick={() => handleStateClick(geo.id)}
+                                            style={{
+                                                default: { fill: "#E9E3DA", stroke: "#FFF", strokeWidth: 0.5, outline: 'none' },
+                                                hover: { fill: "#AED9E0", cursor: "pointer", outline: 'none' },
+                                                pressed: {
+                                                    fill: "#AED9E0", outline: 'none'
+                                                },
+                                            }}
+                                        />
+                                    ))}
+                                </>
+                            )}
+                        </Geographies>
+                    </ComposableMap>
+                    <div className="credit-text-styling">Data source: eBird, the Cornell Lab of Ornithology </div>
+                </>
             )}
         </>
     );
